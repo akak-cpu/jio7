@@ -1,0 +1,105 @@
+{% extends 'basic.html'%}
+{%block title%}index{%endblock%}
+
+{%block body%}
+<div class="body" style="display: grid;grid-template-columns: 25% auto;margin-top: 110px;">
+    <div class="list">
+        <ul style="list-style-type: none;position:fixed">
+            <li style="opacity: 50%;font-weight: 500;">BROWSE</li>
+            <li>New Releases</li>
+            <li>playlist</li>
+            <li>podcast</li>
+            <li>radio</li>
+        </ul>
+    </div>
+
+
+    <div class="songs" style="display: flex;flex-wrap: wrap;align-content: stretch;">
+        <!-- <div class="item">
+            <div class="card" style="width: 18rem;">
+                <img src="https://picsum.photos/305" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">cardname</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        <div class="item" >
+            <div class="card" style="width: 18rem;">
+                <img src="https://picsum.photos/305" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{ songs.0.song_name }}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" id="cart" class="btn btn-primary cart">Go somewhere</a>
+                  
+                </div>
+              </div>
+        </div> -->
+        
+        {% for i in songs|slice:'0:' %}
+        <div class="item">
+        <div class="card" style="width: 18rem;">
+            <img src="/media/{{i.song_coverimage}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.song_name }}</h5>
+              <p class="card-text">{{i.song_details}}</p>
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              <audio controls style="overflow: hidden;"><source src="/media/{{i.song}}"></audio>
+            </div>
+          </div>
+        </div>
+    <!-- {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+    {% endif %} -->
+    {% endfor %}
+    <!-- {% for prod,range,nSlices in allProd %}
+    <div class="item">
+    <div class="card" style="width: 18rem;">
+        <img src="/media/{{prod.song_coverimage}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ prod.song_name }}</h5>
+          <p class="card-text">{{prod.song_details}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <audio controls><source src="/media/{{i.song}}"></audio>
+        </div>
+      </div>
+    </div>  -->
+<!-- {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+{% endif %} -->
+<!-- {% endfor %} -->
+
+    </div>
+
+</div>
+
+{%endblock%}
+{% block js %}
+
+<script>
+  console.log("jswork")
+  if(localStorage.getItem("cart")==null){
+    var cart={};
+  }else{
+    cart=JSON.parse(localStorage.getItem("cart"));
+    document.getElementById("cart").innerHTML=Object.keys(cart).length;
+    updatecart(cart);
+  }
+  $(".cart").click(function(){
+    var idstr=this.id.toString();
+    if (cart[idstr]!=undefined){cart[idstr]=cart[idstr]+1;}
+    else{cart[idstr]=1;}
+    updatecart(cart);
+
+  });
+  $("#popcart").popover();
+  document.getElementById("popcart").setAttribute("data-content","cart is added");
+  function updatecart(cart){
+    for (var item in cart){
+      document.getElementById("div"+item).innerHTML="<button id='minus"+item+"' class='btn btn-primary minus'>-</button> <span id='val"+item+"'>'"+cart[item]+"</span> <button id='plus"+item+"' class='btn btn-primary plus'>+</button>";
+
+    }
+    localStorage.setItem("cart",JSON.stringify(cart));
+    document.getElementById
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'basic.html'%}
+{%block title%}index{%endblock%}
+
+{%block body%}
+{% csrf_token %}
+<div style="width: 100%;height: 100px;"></div>
+{% for i in songs|slice:'0:' %}
+<!-- {%if i.song_name==} -->
+<div class="item">
+<div class="card" style="width: 18rem;">
+    <img src="/media/{{i.song_coverimage}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ i.song_name }}</h5>
+      <p class="card-text">{{i.song_details}}</p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      <audio controls style="overflow: hidden;"><source src="/media/{{i.song}}"></audio>
+    </div>
+  </div>
+</div>
+<!-- {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+{% endif %} -->
+{% endfor %}
+
+
+
+{% endblock %}

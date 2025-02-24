@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  
+  <head>
+    <title>{%block title%} {%endblock%}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<!-- <link rel="stylesheet" href="/static/index.css"> -->
+
+<body>
+  <header>
+<!-- place navbar here -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/static/logo.svg" alt="" width="150px" height="40px" class="d-inline-block align-text-top">
+            
+          </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Music</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">podcast</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">contact</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">GoPro</a>
+          </li> -->
+        </ul>
+        <form class="d-flex" action="/search" method="post">
+          {% csrf_token %}
+          <input class="form-control me-2" id="search" type="search" name="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+          <!-- <p id="popcart" class="btn">cart</p> -->
+        </form>
+      </div>
+    </div>
+  </nav>
+  </header>
+  <main>
+    {%block body%} {%endblock%}
+  </main>
+  <footer style="width: 100%;height:fit-content;background-color:#fff;display: flex;color:#111;justify-content:space-around ;">
+    <div><h4 style="color: #000;">TOP ARTISTS</h4><ul><li>Neha Kakkar</li><li>Arijit Singh</li><li>Badshah</li></ul></div>
+    <div><h4 style="color: #000;">TOP ACTORS</h4><ul><li>Salman Khan</li><li>Allu Arjun</li><li>Sunny Leone</li></ul></div>
+    <div><h4 style="color: #000;">DEVOTIONAL SONGS</h4><ul><li>Krishna Bhajan</li><li>Mahamrityunjaya</li><li>Mantra</li><li>Deva Shree Ganesha</li></ul></div>
+    <div><h4 style="color: #000;">LANGUAGE</h4><ul><li>Hindi Songs</li><li>Punjabi Songs</li><li>Bhojpuri Songs</li><li>Tamil Songs</li></ul></div>
+    <div><h4 style="color: #000;">ARTIST ORIGINALS</h4><ul><li>Zaeden - Dooriyan</li><li>Raghav - Sufi</li><li>SIXK - Dansa</li><li>Siri - My Jam</li><li>Lost Stories, "Mai Ni</li><li>Meriye</li></ul></div>
+    <div><h4 style="color: #000;">COMPANY</h4><ul><li>About Us</li><li>Culture</li><li>Blog</li><LI>Jobs</LI><li>Press</li><li>Advertise</li><li>Terms & Privacy</li><li>Help & Support</li><li>Grievances</li><li>JioSaavn Artist</li><li>Insights</li><li>JioSaavn YourCast</li></ul></div>
+        <!-- place footer here -->
+      </footer>         
+      {% block js %}
+      <script>
+        console.log("karthick")
+    
+    
+      </script>
+      {% endblock %}
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+
+  
+</body>
+
+</html>
